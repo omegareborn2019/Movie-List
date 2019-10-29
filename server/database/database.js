@@ -1,8 +1,7 @@
 var mysql = require('mysql')
 
 var db = mysql.createConnection({
-  user: "omega1984",
-  password: "1917",
+  user: "root",
   database: "movies"
 })
 
@@ -13,4 +12,4 @@ db.connect(err =>{
   }
 })
 
-module.exports = db
+module.exports = db;
