@@ -32,7 +32,6 @@ app.post('/movies', (req, res)=>{
 // update/delete route here
 
 
-
 app.listen(PORT, ()=>{
   console.log(`live server is running on port: ${PORT}`);
 })

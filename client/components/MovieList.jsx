@@ -64,6 +64,8 @@ export default class MovieList extends React.Component{
     this.setState({
       movies: newMovies
     })
+    // send delete request to the server
+    
   }
 
   render(){
