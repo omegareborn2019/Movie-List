@@ -59,20 +59,32 @@ export default class MovieList extends React.Component{
 
   deleteMovie(id){
     const newMovies = this.state.movies.filter(movie =>{
-      return movie.id !== id;
+      return movie.movieId !== id;
     })
     this.setState({
       movies: newMovies
     })
     // send delete request to the server
-    
+    $.ajax({
+      url: "/movies",
+      type: 'DELETE',
+      data: {"id": id},
+      statusCode: {
+        204: () =>{
+          console.log("movie has been deleted from the database");
+        },
+        400: ()=>{
+          console.log("delete error from client");
+        }
+      }
+  });
   }
 
   render(){
     const movies = this.state.movies.map(movie =>{
       return <MovieListEntry 
       key={movie.id}
-      id={movie.id}
+      id={movie.movieId}
       name={movie.movieName}
       createMovie={this.createMovie}
       deleteMovie={this.deleteMovie}

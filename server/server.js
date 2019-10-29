@@ -30,7 +30,18 @@ app.post('/movies', (req, res)=>{
 })
 
 // update/delete route here
-
+app.delete('/movies', (req, res) =>{
+  console.log(req.body.id);
+  db.query(`DELETE FROM movie1 WHERE movieId = ?`, [req.body.id],
+    (err, data) =>{
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("movie has been deleted");
+        res.sendStatus(204);
+      }
+    });
+});
 
 app.listen(PORT, ()=>{
   console.log(`live server is running on port: ${PORT}`);
