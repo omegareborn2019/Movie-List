@@ -19,7 +19,7 @@ export default class NewMovieForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.createMovie({movieName: this.state.name, id: uuid()});
+    this.props.createMovie({movieName: this.state.name, movieId: uuid()});
     this.setState({
       name: ""
     })

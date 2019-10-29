@@ -81,9 +81,9 @@ export default class MovieList extends React.Component{
   }
 
   render(){
-    const movies = this.state.movies.map(movie =>{
+    const movies = this.state.movies.map((movie, index) =>{
       return <MovieListEntry 
-      key={movie.id}
+      key={index}
       id={movie.movieId}
       name={movie.movieName}
       createMovie={this.createMovie}

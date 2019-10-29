@@ -20,7 +20,7 @@ app.get('/movies', (req, res)=>{
 app.post('/movies', (req, res)=>{
   console.log(req.body);
   var sql = `INSERT INTO movie1 (movieName, movieId) VALUES (?,?)`
-  db.query(sql, [req.body.movieName, req.body.id], (err, data) =>{
+  db.query(sql, [req.body.movieName, req.body.movieId], (err, data) =>{
     if (err){
       console.log("posting to database", err);
     }else{
