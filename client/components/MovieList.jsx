@@ -93,7 +93,19 @@ export default class MovieList extends React.Component{
       movies: newMovies
     })
     // send update request to the server
-    
+    $.ajax({
+      url: "/movies",
+      type: 'PUT',
+      data: {"name": newName, "id": id},
+      statusCode: {
+        204: () =>{
+          console.log("movie name has been updated");
+        },
+        400: () =>{
+          console.log("update error from client");
+        }
+      }
+    });
   }
 
   render(){

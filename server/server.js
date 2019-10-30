@@ -44,7 +44,15 @@ app.delete('/movies', (req, res) =>{
 
 // update route here
 app.put('/movies', (req, res) =>{
-  
+  console.log(req.body)
+  db.query(`UPDATE movie1 SET movieName = ? WHERE movieId = ?`, [req.body.name, req.body.id], (err, data) =>{
+    if (err) {
+      console.log(err);
+    }else{
+      console.log("movie has been successfully updated");
+      res.sendStatus(204);
+    }
+  })
 })
 
 app.listen(PORT, ()=>{
