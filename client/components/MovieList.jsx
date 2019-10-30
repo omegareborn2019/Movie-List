@@ -14,6 +14,7 @@ export default class MovieList extends React.Component{
     this.createMovie = this.createMovie.bind(this);
     this.searchMovie = this.searchMovie.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.updateMovie = this.updateMovie.bind(this);
   }
 
   componentDidMount(){
@@ -80,6 +81,21 @@ export default class MovieList extends React.Component{
     });
   }
 
+  updateMovie(id, newName){
+    const newMovies = this.state.movies.map(movie =>{
+      if (movie.movieId === id){
+        return {...movie, movieName: newName};
+      }else{
+        return movie;
+      }
+    })
+    this.setState({
+      movies: newMovies
+    })
+    // send update request to the server
+    
+  }
+
   render(){
     const movies = this.state.movies.map((movie, index) =>{
       return <MovieListEntry 
@@ -88,6 +104,7 @@ export default class MovieList extends React.Component{
       name={movie.movieName}
       createMovie={this.createMovie}
       deleteMovie={this.deleteMovie}
+      updateMovie={this.updateMovie}
       />
     })
     return(
