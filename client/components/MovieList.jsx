@@ -73,11 +73,11 @@ export default class MovieList extends React.Component{
         204: () =>{
           console.log("movie has been deleted from the database");
         },
-        400: ()=>{
+        400: () =>{
           console.log("delete error from client");
         }
       }
-  });
+    });
   }
 
   render(){
